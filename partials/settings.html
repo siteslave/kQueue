@@ -7,8 +7,8 @@
       </md-icon>
     </md-card-avatar>
     <md-card-header-text>
-      <span class="mdi-title">Settings</span>
-      <span class="md-subhead">กำหนดค่าการใช้งานโปรแกรม</span>
+      <span class="mdi-title">HOSxP Connection</span>
+      <span class="md-subhead">การเชื่อมต่อกับฐานข้อมูล HOSxP</span>
     </md-card-header-text>
   </md-card-header>
 
@@ -38,20 +38,13 @@
           <input ng-model="config.hosxp.password" type="password">
         </md-input-container>
       </div>
+      <div layout="row">
+        <span flex></span>
+        <md-button class="md-primary md-raised" ng-click="save()">Save</md-button>
+        <md-button class="md-warn md-raised" ng-click="goBack()">Cancel</md-button>
 
-      <div layout-gt-sm="row">
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>Server URL</label>
-          <input ng-model="config.url" type="text">
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>Key</label>
-          <input ng-model="config.key" type="text">
-        </md-input-container>
       </div>
 
-
-      <md-button class="md-primary md-raised" ng-click="save()">Save</md-button>
     </form>
   </md-card-content>
 </md-card>

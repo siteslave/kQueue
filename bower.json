@@ -1,0 +1,26 @@
+{
+  "name": "kQueue",
+  "description": "Queue System",
+  "main": "main.js",
+  "authors": [
+    "Satit Rianpit <rianpit@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "queue",
+    "health"
+  ],
+  "homepage": "https://github.com/siteslave/kDocument",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-pdf": "~1.3.0"
+  }
+}

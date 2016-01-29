@@ -1,0 +1,63 @@
+<!--<md-content class="md-padding">-->
+<!--<md-header>Queue System</md-header>-->
+  <!--<md-divider></md-divider>-->
+<!--</md-content>-->
+
+<!--<md-content class="md-padding">-->
+  <!--<ng-pdf template-url="./partials/viewer.html" scale=1></ng-pdf>-->
+  <!--<canvas id="pdf-canvas"></canvas>-->
+<!--</md-content>-->
+<md-card>
+  <md-card-header>
+    <md-card-avatar>
+      <md-icon class="md-avatar-icon">
+        <i class="material-icons">search</i>
+      </md-icon>
+    </md-card-avatar>
+    <md-card-header-text>
+      <span class="mdi-title">Queue</span>
+      <span class="md-subhead">กำหนดเงื่อนไขการสร้างคิว</span>
+    </md-card-header-text>
+  </md-card-header>
+
+  <md-card-content>
+    <div layout="row">
+      <div flex>
+        หดกหดดห
+      </div>
+      <div flex>
+        หดกหด
+      </div>
+      <div flex>
+        cxzczx
+      </div>
+    </div>
+  </md-card-content>
+</md-card>
+
+
+<md-card>
+  <md-card-header>
+    <md-card-avatar>
+      <md-icon class="md-avatar-icon">
+        <i class="material-icons">print</i>
+      </md-icon>
+    </md-card-avatar>
+    <md-card-header-text>
+      <span class="mdi-title">Preview</span>
+      <span class="md-subhead">ตัวอย่างบัตรคิวก่อนพิมพ์</span>
+    </md-card-header-text>
+  </md-card-header>
+
+  <md-card-content layout="row" layout-align="space-between">
+    <ng-pdf template-url="./partials/viewer.html" scale=1></ng-pdf>
+    <canvas id="pdf-canvas"></canvas>
+
+    <md-card-actions layout="column">
+      <md-button class="md-icon-button" aria-label="Print" ng-click="print()">
+        <md-icon class="material-icons">print</md-icon>
+      </md-button>
+    </md-card-actions>
+
+  </md-card-content>
+</md-card>

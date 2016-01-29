@@ -5,8 +5,8 @@ angular.module('app.controller.Main', [])
 
     let logged = $window.sessionStorage.getItem('logged');
 
-    if (!logged) {
-      $state.go('login');
-    }
+    //if (!logged) {
+    //  $state.go('login');
+    //}
 
   });

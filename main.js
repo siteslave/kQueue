@@ -15,6 +15,7 @@ const algorithm = 'aes-256-ctr';
 const salt = 'mANiNThEdARk';
 
 let mainWindow;
+let win2;
 let fse = require('fs-extra');
 let path = require('path');
 let fs = require('fs');
@@ -23,12 +24,13 @@ function createWindow () {
 
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600});
+  win2 = new BrowserWindow();
 
   // and load the index.html of the app.
   mainWindow.loadURL('file://' + __dirname + '/index.html');
 
   let dataPath = app.getPath('appData');
-  let appPath = path.join(dataPath, 'kdoc');
+  let appPath = path.join(dataPath, 'kQueue');
   let configFile = path.join(appPath, 'config.json');
 
   let cipher = _crypto.createCipher(algorithm, salt);
@@ -47,8 +49,13 @@ function createWindow () {
           password: _crypted
         },
 
-        url: 'http://localhost:3000',
-        key: 'aaf891ddefffa0914b4d17e701cf5bd493ec2504'
+        queue: {
+          host: '127.0.0.1',
+          database: 'hos',
+          port: 3306,
+          user: 'sa',
+          password: _crypted
+        }
       };
 
       fse.writeJsonSync(configFile, defaultConfig);
@@ -76,9 +83,6 @@ function createWindow () {
   mainWindow.on('closed', function() {
     mainWindow = null;
   });
-
-
-
 }
 
 app.on('ready', createWindow);

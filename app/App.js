@@ -1,10 +1,9 @@
 "use strict";
 
 angular.module('app', [
-    'ngMaterial', 'ui.router', 'md.data.table',
-    'app.tools.Config', 'app.tools.Encrypt', 'app.controller.Main', 'app.controller.Settings',
-    'app.controller.Upload', 'app.controllers.SearchPatientDialog',
-    'app.controllers.Login'
+    'ngMaterial', 'ui.router', 'md.data.table', 'pdf',
+    'app.tools.Config', 'app.controller.Main', 'app.controller.Settings',
+    'app.controllers.Login', 'app.tools.Encrypt', 'app.controller.Print'
   ])
   .config(($stateProvider, $urlRouterProvider) => {
     $urlRouterProvider.otherwise("/");
@@ -20,10 +19,10 @@ angular.module('app', [
         templateUrl: "partials/settings.html",
         controller: 'SettingsCtrl'
       })
-      .state('upload', {
-        url: "/upload",
-        templateUrl: "partials/upload.html",
-        controller: 'UploadCtrl'
+      .state('print', {
+        url: "/print",
+        templateUrl: "partials/print.html",
+        controller: 'PrintCtrl'
       })
       .state('login', {
         url: "/login",
@@ -31,10 +30,11 @@ angular.module('app', [
         controller: 'LoginCtrl'
       });
   })
-.controller('AppCtrl', ($scope, $mdMedia, $rootScope, $state, $window, $timeout, $mdSidenav, Config) => {
-
+.controller('AppCtrl', ($scope, $mdMedia, $rootScope, $state, $window, $timeout, $mdSidenav) => {
+  //
   $scope.go = (state) => {
-    $state.go(state)
+    $state.go(state);
+    //console.log(state);
   };
 
   $scope.logout = () => {
