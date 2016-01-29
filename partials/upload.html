@@ -1,0 +1,185 @@
+
+
+<md-card>
+
+  <md-card-header>
+    <md-card-avatar>
+      <md-icon class="md-avatar-icon">
+        <i class="material-icons">account_circle</i>
+      </md-icon>
+    </md-card-avatar>
+    <md-card-header-text>
+      <span class="mdi-title">ข้อมูลผู้ป่วย</span>
+      <span class="md-subhead">เลือกผู้ป่วยที่ต้องการอัปโหลดเอกสาร</span>
+    </md-card-header-text>
+  </md-card-header>
+
+  <md-card-content layout="row" layout-align="space-between">
+    <div flex>
+      <div layout-gt-sm="row">
+        <md-input-container>
+          <label>HN</label>
+          <input ng-model="patient.hn" disabled>
+        </md-input-container>
+        <md-input-container ng-if="patient.an">
+          <label>AN</label>
+          <input ng-model="patient.an" disabled>
+        </md-input-container>
+        <md-input-container ng-if="patient.vn">
+          <label>VN</label>
+          <input ng-model="patient.vn" disabled>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>ชื่อ-สกุล</label>
+          <input ng-model="patient.fullname" disabled>
+        </md-input-container>
+      </div>
+      <!--<div layout-gt-sm="row">-->
+        <!--<md-input-container>-->
+          <!--<label>วันที่รับบริการ</label>-->
+          <!--<input ng-model="patient.date_serv" disabled>-->
+        <!--</md-input-container>-->
+        <!--<md-input-container>-->
+          <!--<label>เวลา</label>-->
+          <!--<input ng-model="patient.time_serv" disabled>-->
+        <!--</md-input-container>-->
+        <!--<md-input-container class="md-block" flex-gt-sm>-->
+          <!--<label>สิทธิการรักษา</label>-->
+          <!--<input ng-model="patient.right" disabled>-->
+        <!--</md-input-container>-->
+      <!--</div>-->
+    </div>
+    <md-card-actions layout="column">
+      <md-button class="md-icon-button" aria-label="Search" ng-click="showSearchPatient($event)">
+        <md-icon>
+          <i class="material-icons">search</i>
+        </md-icon>
+        <md-tooltip md-direction="left">
+          ค้นหาผู้ป่วย
+        </md-tooltip>
+      </md-button>
+      <!--<md-button class="md-icon-button" aria-label="Clear">-->
+        <!--<md-icon>-->
+          <!--<i class="material-icons">cached</i>-->
+        <!--</md-icon>-->
+        <!--<md-tooltip md-direction="left">-->
+          <!--ล้างข้อมูลใหม่-->
+        <!--</md-tooltip>-->
+      <!--</md-button>-->
+    </md-card-actions>
+  </md-card-content>
+</md-card>
+
+<md-card>
+  <md-card-header>
+    <md-card-avatar>
+      <md-icon class="md-avatar-icon">
+        <i class="material-icons">cloud_upload</i>
+      </md-icon>
+    </md-card-avatar>
+    <md-card-header-text>
+      <span class="mdi-title">อัปโหลดไฟล์</span>
+      <span class="md-subhead">อัปโหลดไฟล์ที่ต้องการ โดยสามารถเลือกเป็นโฟลเดอร์ได้</span>
+    </md-card-header-text>
+  </md-card-header>
+
+  <md-card-content layout="row" layout-align="space-between">
+    <div flex>
+      <md-content style="height: 300px;">
+        <md-table-container>
+          <table md-table ng-model="selected" md-progress="promise">
+            <thead md-head>
+            <tr md-row>
+              <th md-column>#</th>
+              <th md-column>ชื่อไฟล์</th>
+              <th md-column>ประเภท</th>
+              <th md-column>ขนาด</th>
+              <th md-column></th>
+              <!--<th md-column><span>การปฏิบัติตัว</span></th>-->
+            </tr>
+            </thead>
+            <tbody md-body>
+            <tr md-row ng-if="!files.length">
+              <td md-cell colspan="6">ไม่พบรายการ</td>
+            </tr>
+            <tr md-row ng-if="files.length" ng-repeat="file in files">
+              <td md-cell>{{ $index + 1 }}</td>
+              <td md-cell>{{ file.fileName }}</td>
+              <td md-cell>{{ file.type_name }}</td>
+              <td md-cell>{{ file.size }}</td>
+              <td md-cell>
+                <md-button class="md-icon-button" aria-label="View" ng-click="openPdf(file.path)">
+                  <md-icon>
+                    <i class="material-icons">visibility</i>
+                  </md-icon>
+                  <md-tooltip md-direction="top">
+                    Preview
+                  </md-tooltip>
+                </md-button>
+                <md-button class="md-icon-button" aria-label="Remove" ng-click="removeDocument($index)">
+                  <md-icon>
+                    <i class="material-icons">content_cut</i>
+                  </md-icon>
+                  <md-tooltip md-direction="top">
+                    Remove
+                  </md-tooltip>
+                </md-button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </md-table-container>
+      </md-content>
+
+    </div>
+
+    <md-card-actions layout="column">
+      <md-button class="md-icon-button" aria-label="Favorite" ng-click="openFile('1')">
+        <md-icon>
+          <i class="material-icons">content_paste</i>
+        </md-icon>
+        <md-tooltip md-direction="left">
+          OPD/IPD Chart
+        </md-tooltip>
+      </md-button>
+      <md-button class="md-icon-button" aria-label="X-Ray" ng-click="openFile('2')">
+        <md-icon>
+          <i class="material-icons">camera_alt</i>
+        </md-icon>
+        <md-tooltip md-direction="left">
+          X-Ray
+        </md-tooltip>
+      </md-button>
+      <md-button class="md-icon-button" aria-label="Ekg" ng-click="openFile('3')">
+        <md-icon>
+          <i class="material-icons">record_voice_over</i>
+        </md-icon>
+        <md-tooltip md-direction="left">
+          EKG
+        </md-tooltip>
+      </md-button>
+      <md-button class="md-icon-button" aria-label="Ekg" ng-click="openFile('4')">
+        <md-icon>
+          <i class="material-icons">invert_colors</i>
+        </md-icon>
+        <md-tooltip md-direction="left">
+          LAB
+        </md-tooltip>
+      </md-button>
+      <md-button class="md-icon-button" aria-label="Other" ng-click="openFile('5')">
+        <md-icon>
+          <i class="material-icons">event_note</i>
+        </md-icon>
+        <md-tooltip md-direction="left">
+          เอกสารอื่นๆ
+        </md-tooltip>
+      </md-button>
+    </md-card-actions>
+  </md-card-content>
+
+  <div layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+    <md-button class="md-raised md-primary" ng-click="doUpload()">Upload file({{files.length}})</md-button>
+    <md-button class="md-raised md-warn">Clear</md-button>
+  </div>
+
+</md-card>

@@ -1,0 +1,40 @@
+{
+  "name": "kDocument",
+  "version": "1.0.0",
+  "description": "Health Care Document Management System",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siteslave/kDocument"
+  },
+  "keywords": [
+    "emr",
+    "health",
+    "document",
+    "management"
+  ],
+  "author": "Satit Rianpit <rianpit@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/siteslave/kDocument/issues"
+  },
+  "homepage": "https://github.com/siteslave/kDocument#readme",
+  "dependencies": {
+    "angular": "^1.4.8",
+    "angular-animate": "^1.4.8",
+    "angular-aria": "^1.4.8",
+    "angular-material": "^1.0.1",
+    "angular-material-data-table": "^0.9.7",
+    "angular-messages": "^1.4.8",
+    "angular-ui-router": "^0.2.15",
+    "filesize": "^3.1.5",
+    "fs-extra": "^0.26.4",
+    "knex": "^0.9.0",
+    "lodash": "^4.0.0",
+    "moment": "^2.11.1",
+    "mysql": "^2.10.2",
+    "node-rsa": "^0.2.30",
+    "open": "0.0.5",
+    "request": "^2.67.0"
+  }
+}

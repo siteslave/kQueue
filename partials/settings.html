@@ -1,0 +1,57 @@
+
+<md-card>
+  <md-card-header>
+    <md-card-avatar>
+      <md-icon class="md-avatar-icon">
+        <i class="material-icons">settings</i>
+      </md-icon>
+    </md-card-avatar>
+    <md-card-header-text>
+      <span class="mdi-title">Settings</span>
+      <span class="md-subhead">กำหนดค่าการใช้งานโปรแกรม</span>
+    </md-card-header-text>
+  </md-card-header>
+
+  <md-card-content>
+    <form action="">
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>HOST</label>
+          <input ng-model="config.hosxp.host" type="text">
+        </md-input-container>
+        <md-input-container>
+          <label>Port</label>
+          <input ng-model="config.hosxp.port" type="number">
+        </md-input-container>
+        <md-input-container>
+          <label>Database</label>
+          <input ng-model="config.hosxp.database" type="text">
+        </md-input-container>
+      </div>
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Username</label>
+          <input ng-model="config.hosxp.user" type="text">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Password</label>
+          <input ng-model="config.hosxp.password" type="password">
+        </md-input-container>
+      </div>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Server URL</label>
+          <input ng-model="config.url" type="text">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Key</label>
+          <input ng-model="config.key" type="text">
+        </md-input-container>
+      </div>
+
+
+      <md-button class="md-primary md-raised" ng-click="save()">Save</md-button>
+    </form>
+  </md-card-content>
+</md-card>

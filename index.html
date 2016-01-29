@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Health Document Management System 1.0</title>
+
+  <script src="./node_modules/angular/angular.js"></script>
+  <script src="./node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="./node_modules/angular-animate/angular-animate.min.js"></script>
+  <script src="./node_modules/angular-aria/angular-aria.min.js"></script>
+  <script src="./node_modules/angular-messages/angular-messages.min.js"></script>
+  <script src="./node_modules/angular-material/angular-material.js"></script>
+  <script src="./node_modules/angular-material-data-table/dist/md-data-table.js"></script>
+
+  <script src="./app/App.js"></script>
+  <script src="./app/Config.js"></script>
+  <script src="./app/Encrypt.js"></script>
+  <script src="./app/MainCtrl.js"></script>
+  <script src="./app/SettingsCtrl.js"></script>
+  <script src="./app/UploadCtrl.js"></script>
+  <script src="./app/UploadService.js"></script>
+  <script src="./app/SearchPatientDialogCtrl.js"></script>
+  <script src="./app/SearchService.js"></script>
+  <script src="./app/LoginCtrl.js"></script>
+  <script src="./app/LoginService.js"></script>
+
+  <link rel="stylesheet" href="./node_modules/angular-material/angular-material.min.css">
+  <link rel="stylesheet" href="./assets/cssfont/material-icons.css">
+  <link rel="stylesheet" href="./node_modules/angular-material-data-table/dist/md-data-table.css">
+
+  <link rel="stylesheet" href="./assets/style.css">
+
+</head>
+<body  ng-app="app" ng-cloak>
+
+<div ng-controller="AppCtrl" layout="column" style="min-height:700px;" id="popupContainer">
+  <md-toolbar class="md-theme-indigo">
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" aria-label="Home" ng-click="toggleLeft()">
+        <i class="material-icons">menu</i>
+      </md-button>
+      <h2>
+        <span>Document Management System</span>
+      </h2>
+      <span flex></span>
+      <md-button class="md-icon-button" aria-label="Home" ng-click="logout()">
+        <i class="material-icons">exit_to_app</i>
+      </md-button>
+    </div>
+  </md-toolbar>
+
+  <section layout="row" flex>
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+      <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">เมนูหลัก</h1>
+      </md-toolbar>
+      <md-content>
+        <md-menu-content>
+          <md-menu-item>
+            <md-button ng-click="go('main')">
+              <md-icon md-menu-align-target>
+                <i class="material-icons">home</i>
+              </md-icon>
+              หน้าหลัก
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-click="go('upload')">
+              <md-icon md-menu-align-target>
+                <i class="material-icons">cloud_upload</i>
+              </md-icon>
+              อัปโหลดเอกสาร
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-click="go('settings')">
+              <md-icon md-menu-align-target>
+                <i class="material-icons">settings</i>
+              </md-icon>
+              ตั้งค่าการใช้งาน
+            </md-button>
+          </md-menu-item>
+          <!--<md-menu-item>-->
+            <!--<md-button ng-click="go('settings')">-->
+              <!--<md-icon md-menu-align-target>-->
+                <!--<i class="material-icons">local_printshop</i>-->
+              <!--</md-icon>-->
+              <!--พิมพ์สรุปรายงาน-->
+            <!--</md-button>-->
+          <!--</md-menu-item>-->
+        </md-menu-content>
+      </md-content>
+    </md-sidenav>
+
+    <div flex>
+      <ui-view></ui-view>
+    </div>
+
+
+  </section>
+
+</div>
+
+</body>
+</html>

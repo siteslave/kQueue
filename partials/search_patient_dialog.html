@@ -1,0 +1,125 @@
+<md-dialog aria-label="Patient Search" ng-cloak style="width:100%">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>ค้นหาผู้ป่วย (Patient Search)</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="closeDialog()">
+          <md-icon class="material-icons" aria-label="Close dialog">clear</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+
+      <div class="md-dialog-content">
+        <div layout="row" layout-wrap>
+          <div flex="45" layout-padding>
+            <div layout="row">
+              <md-input-container>
+                <input ng-model="query" placeholder="ค้นหา" style="width: 320px;" ng-keypress="queryChange($event)">
+              </md-input-container>
+              <md-button class="md-icon-button" ng-click="doSearch()">
+                <md-icon class="material-icons">search</md-icon>
+              </md-button>
+            </div>
+            <md-content flex layout-padding style="height: 400px;">
+              <md-table-container>
+                <table md-table md-progress="promise">
+                  <thead md-head>
+                  <tr md-row>
+                    <th md-column>HN</th>
+                    <th md-column>ชื่อ-สกุล</th>
+                    <th md-column></th>
+                  </tr>
+                  </thead>
+                  <tbody md-body>
+                  <tr md-row ng-repeat="p in patient" ng-if="!patient.length">
+                    <td md-cell colspan="3">ไม่พบรายการ</td>
+                  <tr md-row ng-repeat="p in patient" ng-if="patient.length">
+                    <td md-cell>{{ p.hn }}</td>
+                    <td md-cell>{{ p.fullname }}</td>
+                    <td md-cell>
+                      <md-button class="md-icon-button" aria-label="More" ng-click="getService(p)">
+                        <md-icon class="material-icons">search</md-icon>
+                      </md-button>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </md-table-container>
+            </md-content>
+
+          </div>
+          <div flex="55">
+
+            <md-tabs md-dynamic-height md-border-bottom>
+              <md-tab label="ประเภทผู้ป่วยนอก (OPD)">
+                <md-content flex layout-padding style="height: 400px;">
+                  <md-table-container>
+                    <table md-table md-progress="promise">
+                      <thead md-head>
+                      <tr md-row>
+                        <th md-column>วันที่</th>
+                        <th md-column>เวลา</th>
+                        <th md-column>แผนก</th>
+                        <th md-column></th>
+                      </tr>
+                      </thead>
+                      <tbody md-body>
+                      <tr md-row ng-if="!opdVisit.length">
+                        <td md-cell colspan="4">ไม่พบรายการ</td>
+                      </tr>
+                      <tr md-row ng-if="opdVisit.length" ng-repeat="v in opdVisit">
+                        <td md-cell>{{ v.vstdate }}</td>
+                        <td md-cell>{{ v.vsttime }}</td>
+                        <td md-cell>{{ v.spclty_name }}</td>
+                        <td md-cell>
+                          <md-button class="md-icon-button" aria-label="More" ng-click="setOpd(v)">
+                            <md-icon class="material-icons">visibility</md-icon>
+                          </md-button>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </md-table-container>
+                </md-content>
+              </md-tab>
+              <md-tab label="ประเภทผู้ป่วยใน (IPD)">
+                <md-content flex layout-padding style="height: 400px;">
+                  <md-table-container>
+                    <table md-table md-progress="promise">
+                      <thead md-head>
+                      <tr md-row>
+                        <th md-column md-order-by="date_serv">AN</th>
+                        <th md-column md-order-by="date_serv">วันที่</th>
+                        <th md-column>เวลา</th>
+                        <th md-column>Ward</th>
+                        <th md-column></th>
+                      </tr>
+                      </thead>
+                      <tbody md-body>
+                      <tr md-row ng-if="!ipdVisit.length">
+                        <td md-cell colspan="5">ไม่พบรายการ</td>
+                      </tr>
+                      <tr md-row ng-if="ipdVisit.length" ng-repeat="v in ipdVisit">
+                        <td md-cell>{{ v.an }}</td>
+                        <td md-cell>{{ v.regdate }}</td>
+                        <td md-cell>{{ v.regtime }}</td>
+                        <td md-cell>{{ v.ward_name }}</td>
+                        <td md-cell>
+                          <md-button class="md-icon-button" aria-label="More" ng-click="setIpd(v)">
+                            <md-icon class="material-icons">visibility</md-icon>
+                          </md-button>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </md-table-container>
+                </md-content>
+              </md-tab>
+            </md-tabs>
+
+          </div>
+        </div>
+      </div>
+    </md-dialog-content>
+</md-dialog>
